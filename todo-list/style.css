@@ -1,0 +1,209 @@
+/* Основні кольори, шрифт і заокруглення можна змінити тут. */
+:root {
+    --page-bg: #c3cbb7;
+    --card-bg: #faf9f4;
+    --text-color: #2d3527;
+    --muted-color: #6a7362;
+    --accent-color: #617553;
+    --accent-hover: #4e6142;
+    --border-color: #d9ddcf;
+    --soft-bg: #f0f2e9;
+    --corner-radius: 14px;
+    --font-family: Arial, sans-serif;
+    --heading-font: Georgia, serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--page-bg);
+    color: var(--text-color);
+    font-family: var(--font-family);
+}
+
+.todo-container {
+    max-width: 760px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.todo-card {
+    padding: 44px 36px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--corner-radius);
+    box-shadow: 0 12px 36px rgb(45 53 39 / 8%);
+}
+
+.todo-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 12px;
+    font-family: var(--heading-font);
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+.subtitle, .hint, .task-date {
+    color: var(--muted-color);
+}
+
+.form-label, legend {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.form-control {
+    padding: 14px 16px;
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+.form-control:focus {
+    background: var(--card-bg);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgb(97 117 83 / 15%);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--accent-color);
+    --bs-btn-border-color: var(--accent-color);
+    --bs-btn-hover-bg: var(--accent-hover);
+    --bs-btn-hover-border-color: var(--accent-hover);
+    --bs-btn-active-bg: var(--accent-hover);
+    --bs-btn-active-border-color: var(--accent-hover);
+    padding-right: 24px;
+    padding-left: 24px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+legend {
+    float: none;
+    margin-bottom: 14px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.empty-message {
+    margin: 0;
+    padding: 28px 16px;
+    background: var(--soft-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    color: var(--muted-color);
+    text-align: center;
+    font-size: 14px;
+}
+
+.list-group {
+    border-radius: 0;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+}
+
+.list-group-item:first-child {
+    border-top: 1px solid var(--border-color);
+}
+
+.task-button {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 20px 12px 20px 48px;
+    border: 0;
+    background: transparent;
+    color: var(--text-color);
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+/* Коло та позначка виконання створені лише стилями. */
+.task-button::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid var(--accent-color);
+    border-radius: 50%;
+}
+
+.task-button[aria-pressed="true"]::before {
+    background: var(--accent-color);
+}
+
+.task-button[aria-pressed="true"]::after {
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 13px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.task-button:hover, .task-button[aria-pressed="true"] {
+    background: var(--soft-bg);
+}
+
+.delete-button {
+    flex-shrink: 0;
+    margin: 8px;
+    padding: 8px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+.delete-button:hover {
+    background: var(--soft-bg);
+    color: var(--text-color);
+}
+
+.task-button:focus-visible, .delete-button:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -3px;
+}
+
+.task-title, .task-date {
+    display: block;
+}
+
+.task-date {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.hint {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* Відступи для невеликих екранів. */
+@media (max-width: 576px) {
+    .todo-container { padding-top: 24px; }
+    .todo-card { padding: 24px 20px; }
+    h1 { font-size: 36px; }
+    .btn-primary { padding-right: 16px; padding-left: 16px; }
+    .form-control { font-size: 14px; }
+}
